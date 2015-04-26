@@ -1,0 +1,21 @@
+{
+  "author": "Tom Clarkson ",
+  "name": "tc-slider",
+  "description": "A basic slider directive for angular",
+  "version": "1.0.0",
+  "repository": {
+    "url": "http://github.com/tqc/tc-slider"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "bourbon": "^4.2.2",
+    "directive-builder": "^1.0.0",
+    "gulp": "^3.8.11",
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  }
+}

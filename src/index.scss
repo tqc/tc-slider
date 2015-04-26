@@ -1,0 +1,178 @@
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ START SLIDERS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+$sliderWidth: 10 !default;
+$sliderHandleSize: 20 !default;
+$sliderHandleColor: orange !default;
+$sliderProgressColor: yellow !default;
+$sliderEmptyColor: #cccccc !default;
+$inputLineHeight: 31 !default;
+
+@include modern {
+    .sliderwrapper {
+        // part of a question - includes the slider and a text input.
+        @include display(flex);
+        .innersliderwrapper {
+            @include flex-grow(1);
+            margin-right: 15px;
+        }
+        .slidervalue {
+            @include flex-grow(1);
+            min-width: 80px;
+            max-width: 80px;
+        }
+    }
+}
+
+
+@include legacy {
+    .sliderwrapper {
+        // part of a question - includes the slider and a text input.
+        position: relative;
+        min-height: #{$inputLineHeight}px;
+        .innersliderwrapper {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 100px;
+        }
+        .slidervalue {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+        }
+    }
+}
+
+
+.innersliderwrapper {
+    // top level in slider.html. Wraps the slider together with markers and popups.
+    position: relative;
+    .slider {
+        cursor: pointer;
+        // main part of the slider.
+        z-index: 1;
+        position: relative;
+        height: #{$sliderWidth}px;
+        margin-top: #{($inputLineHeight - $sliderWidth) / 2}px;
+        background-color: $sliderEmptyColor;
+        .sliderprogress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background-color: $sliderProgressColor;
+        }
+        .sliderhandle {
+            position: absolute;
+            top: 50%;
+            margin-left: -#{$sliderHandleSize / 2}px;
+            margin-top: -#{$sliderHandleSize / 2}px;
+            width: #{$sliderHandleSize}px;
+            height: #{$sliderHandleSize}px;
+            border-radius: 50%;
+            @if $useFlexbox {
+                background-color: $sliderHandleColor;
+            }
+            @else {
+                // ie8 doesn't support border-radius, so a solid bg color would appear behind the image.
+                background-color: transparent;
+                background-image: url("images/sliderball.png");
+            }
+            background-repeat: no-repeat;
+            background-position: 0px 0px;
+            background-size: #{$sliderHandleSize}px;
+            background-size: cover;
+        }
+        .slidervaluepopup {
+            position: absolute;
+            bottom: 40px;
+            .arrow {}
+            .popupbody {
+                text-align: center;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                margin-left: -50%;
+                max-width: 250px;
+                @include mobile {
+                    max-width: 320px;
+                }
+
+                font-size: 8pt;
+            }
+            .popupbody.defaultpopup {
+                // todo: bring back default popups when there is a place for settings
+                display: none;
+            }
+            .popupbody.markerpopup {
+                text-align: left;
+                table {
+                    margin: 15px;
+                    td {
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+    }
+    .slidermarkers {
+        position: relative;
+        margin-top: #{$inputLineHeight / 2}px;
+        .slidermarker {
+            padding-top: 1px;
+            position: absolute;
+            .markerarrow {
+                @include mobile {
+                    height: 7px !important;
+                    border-left-style: solid;
+                }
+
+                border-left: 1px dashed #ccc;
+                width: 1px;
+                position: absolute;
+                top: -20px;
+                left: 0;
+            }
+            .markerlabel {
+                @include mobile {
+                    display: none;
+                }
+
+                cursor: pointer;
+                margin-left: -50%;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                display: inline-block;
+                text-align: center;
+                padding: 3px;
+                box-sizing: border-box;
+                font-size: 8pt;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+/*
+.slidervalue.inputwrapper {
+    @if $useFlexbox {}
+    @else {
+        margin-top: -10px;
+    }
+}
+
+
+.slidervalue.currency input {
+    @if $useFlexbox == false {
+        position: absolute;
+        top: 7.5px;
+        min-width: 80px;
+        right: 0px;
+        left: -15px;
+    }
+}
+*/
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ END SLIDERS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */

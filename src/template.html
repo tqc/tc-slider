@@ -1,0 +1,18 @@
+<div class="innersliderwrapper">
+    <div class='slider'>
+        <div class="sliderprogress" ng-style="{width:(currentPercent+'%')}"></div>
+        <div class="sliderhandle" ng-style="{left:(currentPercent+'%')}"></div>
+        <div class="slidervaluepopup" ng-show="mayShowPopup" ng-style="{left:(popupPosition+'%')}">
+            <div class="arrow" ng-show="activeMarker"></div>
+            <div class="popupbody" ng-class="{markerpopup:activeMarker, defaultpopup:!activeMarker}" bind-text-template="popupTemplate"></div>
+        </div>
+    </div>    
+    <div class="slidermarkers" ng-if="markers">
+        <div class="slidermarker {{marker.class}}" markerindex="{{$index}}" ng-style="{left:(getMarkerPosition(marker)+'%')}" ng-repeat="marker in markers" ng-if="marker.value <= max && marker.showLabel">
+            <div class="markerarrow" ng-style="{height: ((20+marker.layer*25)+'px')}"></div>
+            <div class="markerlabel" ng-style="{'margin-top': ((marker.layer*25)+'px')}">
+                {{marker.name}}
+            </div>
+        </div>
+    </div>
+</div>
