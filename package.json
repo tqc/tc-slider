@@ -1,5 +1,5 @@
 {
-  "author": "Tom Clarkson ",
+  "author": "Tom Clarkson",
   "name": "tc-slider",
   "description": "A basic slider directive for angular",
   "version": "1.0.0",
@@ -10,7 +10,7 @@
   "dependencies": {
     "bourbon": "^4.2.2",
     "directive-builder": "^1.0.0",
-    "gulp": "^3.8.11",
+    "gulp": "^3.8.11"
   },
   "devDependencies": {},
   "optionalDependencies": {},
