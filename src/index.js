@@ -1,5 +1,5 @@
 export default {
-    name: "slider",
+    name: "tcSlider",
     injections: ["$parse"],
     fn: function($parse) {
         return {
@@ -24,8 +24,8 @@ export default {
                 var logarithmic = attrs.logarithmic && true || false;
 
                 var valueGetter = $parse(mvVal);
-                var minGetter = $parse(attrs.min);
-                var maxGetter = $parse(attrs.max);
+                var minGetter = $parse(attrs.ngModelMin);
+                var maxGetter = $parse(attrs.ngModelMax);
                 var base = parseFloat(attrs.base) || 1000;
                 var pcToVal = function(percent) {
                     var pc = percent;
@@ -126,7 +126,7 @@ export default {
                     }
 
                     val = pcToVal(pc);
-                    valueGetter.assign(scope, val);
+                    valueGetter.assign(scope.$parent, val);
                     scope.currentValue = val;
                     scope.currentPercent = pc * 100;
                     updateMarkerPopup(val);
@@ -136,7 +136,7 @@ export default {
 
                 function updateWithVal(val) {
                     var pc = valToPc(val);
-                    valueGetter.assign(scope, val);
+                    valueGetter.assign(scope.$parent, val);
                     scope.currentValue = val;
                     scope.currentPercent = pc * 100;
 
@@ -163,7 +163,7 @@ export default {
 
                     update(diff);
                     scope.$apply();
-                    return false;
+                    return;
                 };
 
                 var onMouseUp = function(evt) {

@@ -2,17 +2,27 @@
   "author": "Tom Clarkson",
   "name": "tc-slider",
   "description": "A basic slider directive for angular",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "url": "http://github.com/tqc/tc-slider"
   },
-  "main": "./index.js",
+  "scripts": {
+    "test": "eslint . && mocha"
+  },
+  "main": "./src/index.js",
   "dependencies": {
     "bourbon": "^4.2.2",
-    "directive-builder": "^1.0.0",
-    "gulp": "^3.8.11"
+    "angular-directive-builder": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-eslint": "*",
+    "chai": "^3.2.0",
+    "eslint": "^1.0.0",
+    "eslint-config-defaults": "^3.1.0",
+    "gulp": "^3.8.11",
+    "mocha": "^2.2.4",
+    "mocha-visual-test": "^1.0.0"
+  },
   "optionalDependencies": {},
   "license": "MIT",
   "engines": {
