@@ -15,10 +15,10 @@ gulp.task("default", ["sass"], function(callback) {
     });
 });
 
-var sass = require('gulp-sass');
+var sass = require('gulp-ruby-sass');
 gulp.task('sass', function () {
-    gulp.src('./demo/index.scss')
-    .pipe(sass().on('error', sass.logError))
+    return sass('./demo/index.scss')
+    .on('error', sass.logError)
     .pipe(gulp.dest('./build'));
 });
 
