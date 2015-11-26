@@ -1,0 +1,195 @@
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ START SLIDERS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+.sliderwrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .sliderwrapper .innersliderwrapper {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+    margin-right: 15px; }
+  .sliderwrapper .slidervalue {
+    -webkit-flex-grow: 1;
+    -moz-flex-grow: 1;
+    flex-grow: 1;
+    -ms-flex-positive: 1;
+    min-width: 80px;
+    max-width: 80px; }
+
+.innersliderwrapper {
+  position: relative; }
+  .innersliderwrapper .slider {
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+    height: 10px;
+    margin-top: 10.5px;
+    background-color: #cccccc; }
+    .innersliderwrapper .slider .sliderprogress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      background-color: yellow; }
+    .innersliderwrapper .slider .sliderhandle {
+      position: absolute;
+      top: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: orange;
+      background-repeat: no-repeat;
+      background-position: 0px 0px;
+      background-size: 20px;
+      background-size: cover; }
+    .innersliderwrapper .slider .slidervaluepopup {
+      position: absolute;
+      bottom: 40px; }
+      .innersliderwrapper .slider .slidervaluepopup .popupbody {
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        margin-left: -50%;
+        max-width: 250px;
+        font-size: 8pt; }
+        @media (max-width: 767px) {
+          .innersliderwrapper .slider .slidervaluepopup .popupbody {
+            max-width: 320px; } }
+      .innersliderwrapper .slider .slidervaluepopup .popupbody.defaultpopup {
+        display: none; }
+      .innersliderwrapper .slider .slidervaluepopup .popupbody.markerpopup {
+        text-align: left; }
+        .innersliderwrapper .slider .slidervaluepopup .popupbody.markerpopup table {
+          margin: 15px; }
+          .innersliderwrapper .slider .slidervaluepopup .popupbody.markerpopup table td {
+            vertical-align: top; }
+  .innersliderwrapper .slidermarkers {
+    position: relative;
+    margin-top: 15.5px; }
+    .innersliderwrapper .slidermarkers .slidermarker {
+      padding-top: 1px;
+      position: absolute; }
+      .innersliderwrapper .slidermarkers .slidermarker .markerarrow {
+        border-left: 1px dashed #ccc;
+        width: 1px;
+        position: absolute;
+        top: -20px;
+        left: 0; }
+        @media (max-width: 767px) {
+          .innersliderwrapper .slidermarkers .slidermarker .markerarrow {
+            height: 7px !important;
+            border-left-style: solid; } }
+      .innersliderwrapper .slidermarkers .slidermarker .markerlabel {
+        cursor: pointer;
+        margin-left: -50%;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        display: inline-block;
+        text-align: center;
+        padding: 3px;
+        box-sizing: border-box;
+        font-size: 8pt;
+        z-index: 2; }
+        @media (max-width: 767px) {
+          .innersliderwrapper .slidermarkers .slidermarker .markerlabel {
+            display: none; } }
+
+/*
+.slidervalue.inputwrapper {
+    @if $useFlexbox {}
+    @else {
+        margin-top: -10px;
+    }
+}
+
+
+.slidervalue.currency input {
+    @if $useFlexbox == false {
+        position: absolute;
+        top: 7.5px;
+        min-width: 80px;
+        right: 0px;
+        left: -15px;
+    }
+}
+*/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ END SLIDERS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+body {
+  font-family: Helvetica, Arial;
+  margin: 0;
+  background-color: #157C45; }
+
+.vcontainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; }
+
+.toprow {
+  background-image: url(bgblur3.jpg);
+  background-size: cover;
+  color: white;
+  padding: 2em 0;
+  text-align: center;
+  margin-bottom: 0em; }
+  .toprow h1 {
+    margin: 0 0;
+    font-size: 48pt; }
+  .toprow a {
+    color: white; }
+  .toprow p {
+    margin-top: 3em; }
+
+.middlerow {
+  background-color: white;
+  flex-grow: 1;
+  padding-bottom: 2em; }
+
+.bottomrow {
+  background-color: #5088B5;
+  background-image: url(bgblur3.jpg);
+  background-size: cover;
+  color: white;
+  text-align: center; }
+  .bottomrow a {
+    color: white; }
+
+.container {
+  margin: auto;
+  max-width: 750px;
+  box-sizing: border-box;
+  padding: 10px; }
+
+[plainish-text] {
+  border: 1px solid silver;
+  font-family: Courier;
+  padding: 0 10px;
+  height: 200px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px; }
+
+.htmlview {
+  margin-right: 10px;
+  min-width: 355px;
+  width: 355px;
+  flex-grow: 1; }
+  .htmlview > div {
+    border: 1px solid silver;
+    padding: 10px;
+    overflow-x: hidden;
+    font-size: 10pt;
+    font-family: Courier;
+    height: 200px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; }
