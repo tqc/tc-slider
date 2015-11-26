@@ -1,4 +1,4 @@
-angular.module("tc-slider", []).directive("tc-slider", ["$parse"].concat([function ($parse) {
+angular.module("tc-slider", []).directive("tcSlider", ["$parse"].concat([function ($parse) {
       return {
         template: "<div class=\"innersliderwrapper\">\n    <div class='slider'>\n        <div class=\"sliderprogress\" ng-style=\"{width:(currentPercent+'%')}\"></div>\n        <div class=\"sliderhandle\" ng-style=\"{left:(currentPercent+'%')}\"></div>\n        <div class=\"slidervaluepopup\" ng-show=\"mayShowPopup\" ng-style=\"{left:(popupPosition+'%')}\">\n            <div class=\"arrow\" ng-show=\"activeMarker\"></div>\n            <div class=\"popupbody\" ng-class=\"{markerpopup:activeMarker, defaultpopup:!activeMarker}\" bind-text-template=\"popupTemplate\"></div>\n        </div>\n    </div>    \n    <div class=\"slidermarkers\" ng-if=\"markers\">\n        <div class=\"slidermarker {{marker.class}}\" markerindex=\"{{$index}}\" ng-style=\"{left:(getMarkerPosition(marker)+'%')}\" ng-repeat=\"marker in markers\" ng-if=\"marker.value <= max && marker.showLabel\">\n            <div class=\"markerarrow\" ng-style=\"{height: ((20+marker.layer*25)+'px')}\"></div>\n            <div class=\"markerlabel\" ng-style=\"{'margin-top': ((marker.layer*25)+'px')}\">\n                {{marker.name}}\n            </div>\n        </div>\n    </div>\n</div>\n",
         replace: true,
@@ -16,8 +16,8 @@ angular.module("tc-slider", []).directive("tc-slider", ["$parse"].concat([functi
           var rangeMax = max;
           var logarithmic = attrs.logarithmic && true || false;
           var valueGetter = $parse(mvVal);
-          var minGetter = $parse(attrs.min);
-          var maxGetter = $parse(attrs.max);
+          var minGetter = $parse(attrs.ngModelMin);
+          var maxGetter = $parse(attrs.ngModelMax);
           var base = parseFloat(attrs.base) || 1000;
           var pcToVal = function(percent) {
             var pc = percent;
@@ -108,7 +108,7 @@ angular.module("tc-slider", []).directive("tc-slider", ["$parse"].concat([functi
               pc = diff / width;
             }
             val = pcToVal(pc);
-            valueGetter.assign(scope, val);
+            valueGetter.assign(scope.$parent, val);
             scope.currentValue = val;
             scope.currentPercent = pc * 100;
             updateMarkerPopup(val);
@@ -116,7 +116,7 @@ angular.module("tc-slider", []).directive("tc-slider", ["$parse"].concat([functi
           }
           function updateWithVal(val) {
             var pc = valToPc(val);
-            valueGetter.assign(scope, val);
+            valueGetter.assign(scope.$parent, val);
             scope.currentValue = val;
             scope.currentPercent = pc * 100;
           }
@@ -137,7 +137,7 @@ angular.module("tc-slider", []).directive("tc-slider", ["$parse"].concat([functi
             }
             update(diff);
             scope.$apply();
-            return false;
+            return ;
           };
           var onMouseUp = function(evt) {
             var target = $(evt.originalEvent.target);
